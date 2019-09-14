@@ -8,5 +8,11 @@
   },
   "keywords": [],
   "author": "anatawa12 <anatawa12@icloud.com> (https://github.com/anatawa12/)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^12.7.5"
+  },
+  "devDependencies": {
+    "typescript": "^3.6.3"
+  }
 }
