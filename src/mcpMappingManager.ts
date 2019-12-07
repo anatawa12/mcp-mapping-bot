@@ -48,6 +48,17 @@ export class MCPVersions {
     }
 }
 
+export function generateMappingUrl(channel: string, mc_ver: string, map_ver: string) {
+    return mappingUrl.replace(/\{(channel|mc_ver|map_ver)}/g, (_: string, name: string, ...rest) => {
+        switch (name) {
+            case "channel": return channel;
+            case "mc_ver": return mc_ver;
+            case "map_ver": return map_ver;
+        }
+        throw new Error();
+    });
+}
+
 export async function getVersions(): Promise<MCPVersions> {
     return new MCPVersions(await (await fetch(jsonUrl)).json());
 }
