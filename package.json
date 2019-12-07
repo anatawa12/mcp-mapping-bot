@@ -11,10 +11,12 @@
   "author": "anatawa12 <anatawa12@icloud.com> (https://github.com/anatawa12/)",
   "license": "ISC",
   "dependencies": {
+    "@types/unzipper": "^0.10.1",
     "conf": "^6.2.0",
     "discord.js": "^11.5.1",
     "node-fetch": "^2.6.0",
-    "request-promise": "^4.2.5"
+    "request-promise": "^4.2.5",
+    "unzipper": "^0.10.5"
   },
   "devDependencies": {
     "@types/node": "^12.7.5",
