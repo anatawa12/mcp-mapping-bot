@@ -20,6 +20,6 @@ import Conf from "conf";
 })();
 
 interface ConfigFile {
-    "version-channels": {[mc: string]:string}
+    "version-channels": { [mc: string]: string[] }
     "discord-token"?: string
 }
