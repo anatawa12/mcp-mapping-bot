@@ -14,7 +14,7 @@ import {Client} from "discord.js";
     });
     const versions = await getVersions();
 
-    const channelMap: { [mc: string]: string | undefined } = {};
+    const channelMap: { [channel: string]: string | undefined } = {};
 
     Object.keys(configFile.get("version-channels"))
         .filter((mc) => versions.getMCVersions().indexOf(mc) == -1)
@@ -25,6 +25,17 @@ import {Client} from "discord.js";
     const getter = new ChannelBotGetter(versions);
     const channels = configFile.get("version-channels");
     const bot = new Client();
+
+    const mainPromises = [] as Promise<any>[];
+
+    for (let [version, channels] of Object.entries(configFile.get("version-channels"))) {
+        for (let channel of channels) {
+            channelMap[channel] = version;
+        }
+        mainPromises.push(getter.get(version));
+    }
+
+    await Promise.all(mainPromises);
 
     bot.on("message", async (message) => {
         if (message.author.bot) return;
